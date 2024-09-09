@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Somos a Everest Company">
+  <title>Everest</title>
+  <link rel="stylesheet" type="text/css" href="./style/style.css">
+  <link rel="icon" href="./img/favicon.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+</head>
+
+<body>
+  <header class="cabecalho">
+    <img class="cabecalho-imagem" src="./img/topo.png" alt="Logo do Projeto">
+    <nav class="cabecalho-menu">
+      <a class="cabecalho-menu-item" href="index.html">Home</a>
+      <a class="cabecalho-menu-item" href="controle.html">Controle</a>
+    </nav>
+  </header>
+
+  <main class="conteudo">
+    <section class="conteudo-principal">
+      <div class="conteudo-principal-escrito">
+        <h1 class="conteudo-principal-escrito-titulo">Painel de controle</h1>
+        <h2 class="conteudo-principal-escrito-subtitulo">WeatherMist</h2>
+        <button id="ligar" class="conteudo-principal-escrito-botao" onclick="ligar()">Ligar</button>
+        <button id="desligar" class="conteudo-principal-escrito-botao" onclick="desligar()">Desligar</button>
+      </div>
+      <img class="conteudo-principal-imagem1" src="./img/umi.jpg" alt="Imagem do umidificador">
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <img class="rodape-imagem" src="img/topo.png" alt="Logo do Projeto">
+  </footer>
+
+  <button onclick="topFunction()" id="top" title="Ir ao topo do site">⇑</button>
+
+  <script src="./js/modal.js"></script>
+  <script src="./js/scroll.js"></script>
+
+  <script>
+    // Conexão com o servidor via Socket.io
+    const socket = io();
+
+    function ligar() {
+      alert("O dispositivo foi ligado!");
+      socket.emit('sendToSerial', 'LIGAR');
+    }
+
+    function desligar() {
+      alert("O dispositivo foi desligado!");
+      socket.emit('sendToSerial', 'DESLIGAR');
+    }
+
+    // Função para rolar até o topo da página
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+</body>
+
+</html>
