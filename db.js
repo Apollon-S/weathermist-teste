@@ -1,5 +1,5 @@
 const { Client } = require('pg');
-const string = "postgresql://matheus:xODBlJ8E8rG4YhgYfPAsMw@weathermist-2507.g8x.gcp-southamerica-east1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full"
+
 
 console.log(process.env.DATABASE_URL);
 // Cria um novo cliente usando a variável de ambiente DATABASE_URL
